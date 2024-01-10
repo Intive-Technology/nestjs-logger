@@ -1,6 +1,6 @@
 {
   "name": "logger-pg",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "A logger for NestJS that logs to PostgreSQL",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
   "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
@@ -16,7 +16,6 @@
     "access": "restricted",
     "registry": "https://npm.pkg.github.com/Intive-Technology",
     "tag": "latest"
-    
   },
   "repository": {
     "type": "git",
