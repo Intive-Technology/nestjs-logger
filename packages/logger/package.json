@@ -7,8 +7,7 @@
   "license": "ISC",
   "main": "lib/logger.js",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "lib": "lib"
   },
   "files": [
     "lib"
@@ -23,7 +22,6 @@
     "tag": "latest"
   },
   "scripts": {
-    "test": "node ./__tests__/logger.test.js",
     "build": "tsc"
   },
   "bugs": {
@@ -33,5 +31,6 @@
     "@nestjs/common": "^10.3.0",
     "nestjs-pino": "^4.0.0",
     "pino-http": "^9.0.0"
-  }
+  },
+  "gitHead": "2b6707651420bbb2b960648869dd069c403c1072"
 }

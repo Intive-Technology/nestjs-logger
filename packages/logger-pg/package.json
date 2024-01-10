@@ -7,8 +7,7 @@
   "license": "ISC",
   "main": "lib/logger-pg.js",
   "directories": {
-    "lib": "lib",
-    "test": "__tests__"
+    "lib": "lib"
   },
   "files": [
     "lib"
@@ -23,7 +22,6 @@
     "url": "git+https://github.com/Intive-Technologies/nestjs-logger.git"
   },
   "scripts": {
-    "test": "node ./__tests__/logger-pg.test.js",
     "build": "tsc"
   },
   "bugs": {
@@ -31,5 +29,6 @@
   },
   "dependencies": {
     "pg": "^8.11.3"
-  }
+  },
+  "gitHead": "2b6707651420bbb2b960648869dd069c403c1072"
 }
