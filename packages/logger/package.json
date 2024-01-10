@@ -1,0 +1,37 @@
+{
+  "name": "intive-logger",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
+  "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
+  "license": "ISC",
+  "main": "lib/logger.js",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Intive-Technologies/nestjs-logger.git"
+  },
+  "publishConfig": {
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com",
+    "tag": "latest"
+  },
+  "scripts": {
+    "test": "node ./__tests__/logger.test.js",
+    "build": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/Intive-Technologies/nestjs-logger/issues"
+  },
+  "peerDependencies": {
+    "@nestjs/common": "^10.3.0",
+    "nestjs-pino": "^4.0.0",
+    "pino-http": "^9.0.0"
+  }
+}
