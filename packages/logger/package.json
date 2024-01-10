@@ -1,5 +1,5 @@
 {
-  "name": "intive-logger",
+  "name": "@intive/nestjs-logger",
   "version": "0.0.7",
   "description": "> TODO: description",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
@@ -32,5 +32,5 @@
     "nestjs-pino": "^4.0.0",
     "pino-http": "^9.0.0"
   },
-  "gitHead": "af62d9af6bc32094bb2e3d5f03ebf2c45088d8ae"
+  "gitHead": "a451aa7ea96ba41ae97da56d908fc0e7eff21455"
 }

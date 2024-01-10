@@ -1,14 +1,11 @@
 {
-  "name": "root",
+  "name": "intive-logger",
   "private": true,
   "version": "1.0.0",
   "description": "Logging framework for NestJs",
   "workspaces": [
     "packages/*"
   ],
-  "scripts": {
-    "publish": "learn build && npm publish --access public --workspaces all"
-  },
   "author": {
     "name": "NestJs",
     "email": "harshad.parmar.ext@intive.com",
