@@ -14,7 +14,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com",
+    "registry": "https://npm.pkg.github.com/Intive-Technology",
     "tag": "latest"
   },
   "repository": {
@@ -30,5 +30,5 @@
   "dependencies": {
     "pg": "^8.11.3"
   },
-  "gitHead": "d97039efc521dbdf7b796f4f478da0f0c449ca2f"
+  "gitHead": "0e8c2d1000c31470fa2b6dfa661bd32255f71aaa"
 }
