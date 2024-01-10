@@ -1,6 +1,6 @@
 {
   "name": "logger-kafka",
-  "version": "1.0.0",
+  "version": "1.0.1-alpha.0",
   "description": "A logger module for Nest framework (node.js) with Kafka transport",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
   "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
