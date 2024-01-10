@@ -17,7 +17,7 @@
     "url": "git+https://github.com/Intive-Technologies/nestjs-logger.git"
   },
   "publishConfig": {
-    "access": "restricted",
+    "access": "public",
     "registry": "https://npm.pkg.github.com",
     "tag": "latest"
   },
@@ -32,5 +32,5 @@
     "nestjs-pino": "^4.0.0",
     "pino-http": "^9.0.0"
   },
-  "gitHead": "4d87f823cbd1c74d458f4be2406cda6b440651bb"
+  "gitHead": "a223db335b85c47ef077461f7776d67e77882e5e"
 }
