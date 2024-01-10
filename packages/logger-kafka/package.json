@@ -13,7 +13,7 @@
     "lib"
   ],
   "publishConfig": {
-    "access": "public",
+    "access": "restricted",
     "registry": "https://npm.pkg.github.com/Intive-Technology",
     "tag": "latest"
   },
@@ -30,5 +30,5 @@
   "dependencies": {
     "kafkajs": "^2.2.4"
   },
-  "gitHead": "0e8c2d1000c31470fa2b6dfa661bd32255f71aaa"
+  "gitHead": "dceebf2b7d7b490cc479d1fa8e647424805e1469"
 }

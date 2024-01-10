@@ -1,6 +1,6 @@
 {
   "name": "intive-logger",
-  "version": "0.0.4",
+  "version": "0.0.2",
   "description": "> TODO: description",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
   "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
@@ -17,8 +17,8 @@
     "url": "git+https://github.com/Intive-Technologies/nestjs-logger.git"
   },
   "publishConfig": {
-    "access": "public",
-    "registry": "https://npm.pkg.github.com",
+    "access": "restricted",
+    "registry": "https://npm.pkg.github.com/Intive-Technology",
     "tag": "latest"
   },
   "scripts": {
@@ -32,5 +32,5 @@
     "nestjs-pino": "^4.0.0",
     "pino-http": "^9.0.0"
   },
-  "gitHead": "0e8c2d1000c31470fa2b6dfa661bd32255f71aaa"
+  "gitHead": "d97039efc521dbdf7b796f4f478da0f0c449ca2f"
 }
