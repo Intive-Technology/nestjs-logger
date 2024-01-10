@@ -7,7 +7,7 @@
     "packages/*"
   ],
   "scripts": {
-    "publish": "lerna run build && lerna publish"
+    "publish": "learn build && npm publish --access public --workspaces all"
   },
   "author": {
     "name": "NestJs",
