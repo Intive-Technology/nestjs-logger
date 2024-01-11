@@ -7,7 +7,6 @@
   ],
   "command": {
     "publish": {
-      "directory": "packages",
       "registry": "https://npm.pkg.github.com/",
       "access": "public",
       "ignoreChanges": [
