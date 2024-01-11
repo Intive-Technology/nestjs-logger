@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "description": "Logging framework for NestJs",
   "workspaces": [
-    "packages/*"
+    "packages/logger", "packages/logger-kafka", "packages/logger-pg"
   ],
   "author": {
     "name": "NestJs",
