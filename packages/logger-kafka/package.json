@@ -14,7 +14,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/Intive-Technology",
+    "registry": "https://npm.pkg.github.com/Intive-Technology/nestjs-logger",
     "tag": "latest"
   },
   "repository": {

@@ -9,7 +9,7 @@
   "author": {
     "name": "NestJs",
     "email": "harshad.parmar.ext@intive.com",
-    "url": "https://github.com/intive-technology"
+    "url": "https://github.com/intive-technology/intive-logger"
   },
   "repository": {
     "directory": "packages/logger",
