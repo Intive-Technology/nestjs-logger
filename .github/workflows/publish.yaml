@@ -17,7 +17,7 @@ jobs:
           registry-url: 'https://npm.pkg.github.com'
           # Defaults to the user or organization that owns the workflow file
           scope: '@Intive-Technology'
-      - run: npx lerna build
+      - run: npx lerna run build
       - run: npm publish -ws all
         env:
           NODE_AUTH_TOKEN: ${{ secrets.PAT }}
