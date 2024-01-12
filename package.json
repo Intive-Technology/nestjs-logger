@@ -11,6 +11,9 @@
     "email": "harshad.parmar.ext@intive.com",
     "url": "https://github.com/intive-technology/intive-logger"
   },
+  "scripts": {
+    "build": "lerna run build"
+  },
   "repository": {
     "directory": "packages/logger",
     "type": "git",
