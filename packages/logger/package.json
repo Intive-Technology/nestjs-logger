@@ -32,5 +32,5 @@
     "nestjs-pino": "^4.0.0",
     "pino-http": "^9.0.0"
   },
-  "gitHead": "7fe9a1a0640ef3d8946155067e66d409ea387603"
+  "gitHead": "6eff739794b38f6856dfd2da0c4bde5261a0f679"
 }
