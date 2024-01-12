@@ -17,14 +17,15 @@ jobs:
         with:
           node-version: 20.x
           registry-url: 'https://npm.pkg.github.com'
-      - name: install
+          scope: '@Intive-Technology'
+      - name: install in root
         run: npm install
-      - name: test
-        run: npm test
+      - name: install in workspaces
+        run: npm install --workspaces all
       # Publish to npm if this version is not published
       - name: Publish
         run: |
-          npx can-npm-publish --yes --verbose && npm publish || echo "Does not publish"
+          npm publish --workspaces all || echo "Does not publish"
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       # Push tag to GitHub if the version's tag is not tagged
