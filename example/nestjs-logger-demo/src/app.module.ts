@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { Logger } from '@intive-technology/logger';
+import { PinoLoggerModule } from '@intive-technology/logger';
 
 @Module({
-  imports: [ Logger.register({
+  imports: [ PinoLoggerModule.register({
     name: 'nestjs-logger-demo',
   },
   [
@@ -15,6 +15,7 @@ import { Logger } from '@intive-technology/logger';
       type: 'file',
       parameters: {
         path: './logs/nestjs-logger-demo.log',
+
       }
     },
   ]) ],
