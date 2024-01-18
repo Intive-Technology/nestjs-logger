@@ -30,5 +30,5 @@
   "dependencies": {
     "kafkajs": "^2.2.4"
   },
-  "gitHead": "d01db1704b4410f4c1508fcbf5c0798546d3f936"
+  "gitHead": "444a157b28f2daac68df43d145af55832c627701"
 }
