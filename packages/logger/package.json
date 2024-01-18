@@ -1,6 +1,6 @@
 {
   "name": "@intive-technology/logger",
-  "version": "0.0.18",
+  "version": "0.0.19",
   "description": "Logging framework for NestJs",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
   "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
