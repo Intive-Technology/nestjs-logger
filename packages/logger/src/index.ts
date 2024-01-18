@@ -1,25 +1,30 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { LoggerService } from "./logger.service";
 import { LoggerModule } from "nestjs-pino";
-import { StreamEntry, destination, multistream, MultiStreamOptions } from 'pino';
+import { StreamEntry, destination, multistream, MultiStreamOptions, DestinationStream } from 'pino';
 import { Options } from 'pino-http';
 import LoggerConfig from "./LoggerConfig";
 import { PostgresParams } from "./Postgres";
 import { KafkaConfig } from "./Kafka";
+import { Transform } from "stream";
 
 
 interface FileParams extends LoggerConfig {
     type: 'file';
-    parameters: {
-        path: string;
-    }
+    parameters: DestinationStream
 };
 
 interface StdParams extends LoggerConfig {
     type: 'std',
 };
 
-type LoggerStreamConfig =  PostgresParams | KafkaConfig | FileParams | StdParams;
+interface StreamParams extends LoggerConfig {
+    type: 'stream',
+    parameters: Record<string, string | number | null>,
+    streamClass: typeof Transform
+}
+
+type LoggerStreamConfig = PostgresParams | KafkaConfig | FileParams | StdParams | StreamParams;
 
 @Module({
     providers: [LoggerService],
@@ -47,16 +52,19 @@ export class PinoLoggerModule {
                     case 'file':
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
-                            stream: destination({
-                                dest: stream.parameters.path,
-                                sync: true,
-                            })
+                            stream: destination(stream.parameters)
                         });
                         break;
                     case 'std':
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
                             stream: process.stdout,
+                        });
+                        break;
+                    case 'stream':
+                        this.multiStreamArray.push({
+                            level: stream.level ?? 'info',
+                            stream: new stream.streamClass(stream.parameters),
                         });
                         break;
                 }

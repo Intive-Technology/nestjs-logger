@@ -17,7 +17,7 @@ jobs:
         with:
           node-version: 20.x
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@Intive-Technology'
+          scope: '@intive-technology'
       - name: install in root
         run: npm install
       - name: install in workspaces

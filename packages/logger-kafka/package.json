@@ -1,6 +1,6 @@
 {
-  "name": "@intive/logger-kafka",
-  "version": "0.0.16",
+  "name": "@intive-technology/logger-kafka",
+  "version": "0.0.17",
   "description": "A logger module for Nest framework (node.js) with Kafka transport",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
   "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
@@ -14,7 +14,7 @@
   ],
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/Intive-Technology/nestjs-logger",
+    "registry": "https://npm.pkg.github.com/@intive-technology",
     "tag": "latest"
   },
   "repository": {

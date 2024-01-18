@@ -1,11 +1,11 @@
 {
-  "name": "@intive/nestjs-logger",
-  "version": "0.0.16",
-  "description": "> TODO: description",
+  "name": "@intive-technology/logger",
+  "version": "0.0.17",
+  "description": "Logging framework for NestJs",
   "author": "harshad-intive <147067993+harshad-intive@users.noreply.github.com>",
   "homepage": "https://github.com/Intive-Technologies/nestjs-logger#readme",
   "license": "ISC",
-  "main": "lib/logger.js",
+  "main": "lib/index.js",
   "directories": {
     "lib": "lib"
   },
@@ -18,7 +18,7 @@
   },
   "publishConfig": {
     "access": "public",
-    "registry": "https://npm.pkg.github.com/Intive-Technology/nestjs-logger",
+    "registry": "https://npm.pkg.github.com/@intive-technology",
     "tag": "latest"
   },
   "scripts": {
@@ -32,5 +32,5 @@
     "nestjs-pino": "^4.0.0",
     "pino-http": "^9.0.0"
   },
-  "gitHead": "d01db1704b4410f4c1508fcbf5c0798546d3f936"
+  "gitHead": "d7b4f3fc2259a4261db9ee97e55ef637b7c492b6"
 }
