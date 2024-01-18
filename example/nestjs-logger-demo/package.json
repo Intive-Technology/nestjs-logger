@@ -1,8 +1,8 @@
 {
   "name": "nestjs-logger-demo",
   "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "description": "Example to use intive logger",
+  "author": "Harshadkumar Parmar <harshad.parmar.ext@intive.com>",
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
