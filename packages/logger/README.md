@@ -79,8 +79,4 @@ Uses `process.stdout` stream for logging to the console.
 
 ### 2. **File** File stream log
 
-Need to add path parameter to write logs
-
-
-
-
+Need to add path parameter to write logs.
