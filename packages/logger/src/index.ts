@@ -1,7 +1,8 @@
 import { DynamicModule, Module } from "@nestjs/common";
 import { LoggerService } from "./logger.service";
-import { LoggerModule } from "nestjs-pino";
-import { StreamEntry, destination, multistream, MultiStreamOptions, DestinationStream } from 'pino';
+import { LoggerModule as PinoLoggerModule } from "nestjs-pino";
+import { StreamEntry, destination, multistream, MultiStreamOptions } from 'pino';
+import { SonicBoomOpts } from 'sonic-boom';
 import { Options } from 'pino-http';
 import LoggerConfig from "./LoggerConfig";
 import { PostgresParams } from "./Postgres";
@@ -11,7 +12,7 @@ import { Transform } from "stream";
 
 interface FileParams extends LoggerConfig {
     type: 'file';
-    parameters: DestinationStream
+    parameters: SonicBoomOpts
 };
 
 interface StdParams extends LoggerConfig {
@@ -30,7 +31,7 @@ type LoggerStreamConfig = PostgresParams | KafkaConfig | FileParams | StdParams 
     providers: [LoggerService],
     exports: [LoggerService],
 })
-export class PinoLoggerModule {
+export class LoggerModule {
     static multiStreamArray: StreamEntry[] = [];
     static register(options: Options, streams: LoggerStreamConfig[] = [], streamOptions: MultiStreamOptions = {}): DynamicModule {
 
@@ -52,7 +53,7 @@ export class PinoLoggerModule {
                     case 'file':
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
-                            stream: destination(stream.parameters)
+                            stream: destination(stream.parameters),
                         });
                         break;
                     case 'std':
@@ -72,7 +73,7 @@ export class PinoLoggerModule {
         }
 
         const imports = [
-            LoggerModule.forRoot({
+            PinoLoggerModule.forRoot({
                 pinoHttp: [
                     options,
                     multistream(this.multiStreamArray, streamOptions)
@@ -81,7 +82,7 @@ export class PinoLoggerModule {
         ];
         return {
             imports,
-            module: PinoLoggerModule,
+            module: LoggerModule,
         };
     }
 }
