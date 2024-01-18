@@ -11,26 +11,12 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const logger_1 = require("@intive-technology/logger");
-const stream_1 = require("stream");
-class Test extends stream_1.Transform {
-    constructor() {
-        super();
-    }
-    _transform(chunk, encoding, callback) {
-        console.log('chunk', chunk);
-        callback(null, chunk);
-    }
-    _flush(callback) {
-        console.log('flush');
-        callback();
-    }
-}
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
 exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
-        imports: [logger_1.PinoLoggerModule.register({
+        imports: [logger_1.LoggerModule.register({
                 name: 'nestjs-logger-demo',
             }, [
                 {
@@ -39,13 +25,9 @@ exports.AppModule = AppModule = __decorate([
                 {
                     type: 'file',
                     parameters: {
-                        path: './logs/nestjs-logger-demo.log',
-                    }
+                        dest: './logs/file.log',
+                    },
                 },
-                {
-                    type: 'stream',
-                    streamClass: Test
-                }
             ])],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

@@ -1,9 +1,10 @@
 import { Transform } from "stream";
-import LoggerConfig from "./LoggerConfig";
+import { LoggerConfig } from "./LoggerConfig";
+import { LogType } from "./LogType";
 
 interface KafkaConfig extends LoggerConfig {
     streamClass: typeof _Kafka;
-    type: 'kafka';
+    type: LogType.KAFKA;
     parameters: {
         brokers: string[];
         clientId: string;

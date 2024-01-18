@@ -4,23 +4,24 @@ import { LoggerModule as PinoLoggerModule } from "nestjs-pino";
 import { StreamEntry, destination, multistream, MultiStreamOptions } from 'pino';
 import { SonicBoomOpts } from 'sonic-boom';
 import { Options } from 'pino-http';
-import LoggerConfig from "./LoggerConfig";
+import { LoggerConfig } from "./LoggerConfig";
 import { PostgresParams } from "./Postgres";
 import { KafkaConfig } from "./Kafka";
 import { Transform } from "stream";
+import { LogType } from "./LogType";
 
 
 interface FileParams extends LoggerConfig {
-    type: 'file';
+    type: LogType.FILE;
     parameters: SonicBoomOpts
 };
 
 interface StdParams extends LoggerConfig {
-    type: 'std',
+    type: LogType.STD;
 };
 
 interface StreamParams extends LoggerConfig {
-    type: 'stream',
+    type: LogType.STREAM
     parameters: Record<string, string | number | null>,
     streamClass: typeof Transform
 }
@@ -38,31 +39,31 @@ export class LoggerModule {
         if (streams.length > 0) {
             streams.forEach(stream => {
                 switch (stream.type) {
-                    case 'pg':
+                    case LogType.PG:
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
                             stream: new stream.streamClass(stream.parameters, stream.parameters.logTableName ?? 'logs', stream.parameters.logColumnName ?? 'log')
                         });
                         break;
-                    case 'kafka':
+                    case LogType.KAFKA:
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
                             stream: new stream.streamClass(stream.parameters.brokers, stream.parameters.clientId, stream.parameters.topic)
                         });
                         break;
-                    case 'file':
+                    case LogType.FILE:
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
                             stream: destination(stream.parameters),
                         });
                         break;
-                    case 'std':
+                    case LogType.STD:
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
                             stream: process.stdout,
                         });
                         break;
-                    case 'stream':
+                    case LogType.STREAM:
                         this.multiStreamArray.push({
                             level: stream.level ?? 'info',
                             stream: new stream.streamClass(stream.parameters),

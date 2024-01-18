@@ -1,10 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { PinoLoggerModule } from '@intive-technology/logger';
+import { LoggerModule } from '@intive-technology/logger';
+// import { KafkaConfig } from '@intive-technology/logger-kafka';
 
 @Module({
-  imports: [ PinoLoggerModule.register({
+  imports: [ LoggerModule.register({
     name: 'nestjs-logger-demo',
   },
   [
@@ -14,9 +15,8 @@ import { PinoLoggerModule } from '@intive-technology/logger';
     {
       type: 'file',
       parameters: {
-        path: './logs/nestjs-logger-demo.log',
-
-      }
+       dest: './logs/file.log',
+      },
     },
   ]) ],
   controllers: [AppController],

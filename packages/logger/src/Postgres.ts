@@ -1,8 +1,9 @@
 import { Transform } from 'stream';
-import LoggerConfig from './LoggerConfig';
+import { LoggerConfig } from './LoggerConfig';
+import { LogType } from './LogType';
 
 interface PostgresParams extends LoggerConfig {
-    type: 'pg';
+    type: LogType.PG;
     parameters: {
         host: string;
         port: number;

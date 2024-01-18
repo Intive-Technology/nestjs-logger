@@ -1,6 +1,7 @@
 import { Level } from 'pino';
+import { LogType } from './LogType';
 
-export default interface LoggerConfig {
+export interface LoggerConfig {
     level?: Level;
-    type: 'pg' | 'kafka' | 'file' | 'std' | 'stream';
+    type: LogType;
 }
