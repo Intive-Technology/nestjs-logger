@@ -1,3 +1,4 @@
+import { LoggerService } from '@intive-technology/logger';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()

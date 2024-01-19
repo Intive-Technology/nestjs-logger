@@ -11,6 +11,17 @@ const common_1 = require("@nestjs/common");
 const app_controller_1 = require("./app.controller");
 const app_service_1 = require("./app.service");
 const logger_1 = require("@intive-technology/logger");
+const stream_1 = require("stream");
+class TestStream extends stream_1.Transform {
+    constructor(opts) {
+        super();
+        this.prefix = opts.prefix;
+    }
+    _transform(chunk, encoding, callback) {
+        console.log(this.prefix, chunk.toString());
+        callback(null, chunk);
+    }
+}
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -20,14 +31,23 @@ exports.AppModule = AppModule = __decorate([
                 name: 'nestjs-logger-demo',
             }, [
                 {
-                    type: 'std'
+                    type: logger_1.LogType.STD
                 },
                 {
-                    type: 'file',
+                    type: logger_1.LogType.FILE,
                     parameters: {
                         dest: './logs/file.log',
+                        mkdir: true
                     },
                 },
+                {
+                    type: logger_1.LogType.STREAM,
+                    streamClass: TestStream,
+                    level: 'error',
+                    parameters: {
+                        prefix: 'test.............'
+                    }
+                }
             ])],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

@@ -8,16 +8,25 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
 var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
+var AppController_1;
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppController = void 0;
 const common_1 = require("@nestjs/common");
 const app_service_1 = require("./app.service");
-let AppController = class AppController {
+const common_2 = require("@nestjs/common");
+let AppController = AppController_1 = class AppController {
     constructor(appService) {
         this.appService = appService;
+        this.logger = new common_2.Logger(AppController_1.name);
     }
     getHello() {
+        this.logger.debug('getHello API');
         return this.appService.getHello();
+    }
+    getError() {
+        this.logger.debug('getHello API');
+        this.logger.error('error', 'AppController');
+        throw new Error('error');
     }
 };
 exports.AppController = AppController;
@@ -27,7 +36,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", String)
 ], AppController.prototype, "getHello", null);
-exports.AppController = AppController = __decorate([
+__decorate([
+    (0, common_1.Get)('/error'),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", []),
+    __metadata("design:returntype", String)
+], AppController.prototype, "getError", null);
+exports.AppController = AppController = AppController_1 = __decorate([
     (0, common_1.Controller)(),
     __metadata("design:paramtypes", [app_service_1.AppService])
 ], AppController);
