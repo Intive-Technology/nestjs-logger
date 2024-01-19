@@ -1,9 +1,9 @@
 import { LoggerModule } from "./logger";
 import { LogType } from "./LogType";
-import { LoggerService } from "./logger.service";
+import { Logger } from 'nestjs-pino';
 
 export {
     LoggerModule,
     LogType,
-    LoggerService
+    Logger
 };
