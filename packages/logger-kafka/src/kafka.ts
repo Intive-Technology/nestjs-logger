@@ -4,7 +4,7 @@ import { TransformCallback, Transform } from 'stream';
 /**
  * A transform stream for writing logs to Kafka.
  */
-export default class KafkaTransport extends Transform {
+export default class Kafka extends Transform {
     private producer: ProducerFactory;
     topic: string;
 

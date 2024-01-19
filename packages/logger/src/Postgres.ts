@@ -1,4 +1,4 @@
-import { Transform } from 'stream';
+import { Transform, TransformCallback } from 'stream';
 import { LoggerConfig } from './LoggerConfig';
 import { LogType } from './LogType';
 
@@ -13,19 +13,16 @@ interface PostgresParams extends LoggerConfig {
         logTableName?: string;
         logColumnName?: string;
     };
-    streamClass: typeof _Postgres;
+    streamClass: typeof Postgres;
 };
 
-class _Postgres extends Transform {
-    /**
-     * Create a new instance of the Postgres transform stream.
-     * @param params 
-     * @param tableName 
-     * @param columnName 
-     */
-    constructor(params: PostgresParams['parameters'], tableName: string, columnName: string) {
-        super();
-    }
+declare class Postgres extends Transform {
+    private pool;
+    private tableName;
+    private columnName;
+    constructor(params: PostgresParams['parameters'], tableName: string, columnName: string);
+    _flush(callback: TransformCallback): void;
+    _transform(chunk: any, encoding: string, callback: TransformCallback): void;
 }
 
-export { PostgresParams, _Postgres };
+export { PostgresParams, Postgres };

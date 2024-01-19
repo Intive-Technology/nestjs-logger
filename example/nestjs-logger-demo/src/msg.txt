@@ -1,1 +1,0 @@
-Login not working after some failed attempts MacBook. I tried correct password afterword but timer increase after each attempt. 
