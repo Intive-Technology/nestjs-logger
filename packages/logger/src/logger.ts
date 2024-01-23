@@ -5,8 +5,6 @@ import { StreamEntry, destination, multistream, MultiStreamOptions } from 'pino'
 import { SonicBoomOpts } from 'sonic-boom';
 import { Options } from 'pino-http';
 import { LoggerConfig } from "./LoggerConfig";
-import { PostgresParams } from "./Postgres";
-import { KafkaConfig } from "./Kafka";
 import { Transform } from "stream";
 import { LogType } from "./LogType";
 
@@ -23,10 +21,10 @@ interface StdParams extends LoggerConfig {
 interface StreamParams extends LoggerConfig {
     type: LogType.STREAM
     parameters: Record<string, string | number | null>,
-    streamClass: typeof Transform
+    stream: Transform
 }
 
-type LoggerStreamConfig = PostgresParams | KafkaConfig | FileParams | StdParams | StreamParams;
+type LoggerStreamConfig = FileParams | StdParams | StreamParams;
 
 @Module({
     providers: [LoggerService],
@@ -37,36 +35,24 @@ export class LoggerModule {
     static register(options: Options, streams: LoggerStreamConfig[] = [], streamOptions: MultiStreamOptions = {}): DynamicModule {
 
         if (streams.length > 0) {
-            streams.forEach(stream => {
-                switch (stream.type) {
-                    case LogType.PG:
-                        this.multiStreamArray.push({
-                            level: stream.level ?? 'info',
-                            stream: new stream.streamClass(stream.parameters, stream.parameters.logTableName ?? 'logs', stream.parameters.logColumnName ?? 'log')
-                        });
-                        break;
-                    case LogType.KAFKA:
-                        this.multiStreamArray.push({
-                            level: stream.level ?? 'info',
-                            stream: new stream.streamClass(stream.parameters.brokers, stream.parameters.clientId, stream.parameters.topic)
-                        });
-                        break;
+            streams.forEach(streamParam => {
+                switch (streamParam.type) {
                     case LogType.FILE:
                         this.multiStreamArray.push({
-                            level: stream.level ?? 'info',
-                            stream: destination(stream.parameters),
+                            level: streamParam.level ?? 'info',
+                            stream: destination(streamParam.parameters),
                         });
                         break;
                     case LogType.STD:
                         this.multiStreamArray.push({
-                            level: stream.level ?? 'info',
+                            level: streamParam.level ?? 'info',
                             stream: process.stdout,
                         });
                         break;
                     case LogType.STREAM:
                         this.multiStreamArray.push({
-                            level: stream.level ?? 'info',
-                            stream: new stream.streamClass(stream.parameters),
+                            level: streamParam.level ?? 'info',
+                            stream: streamParam.stream,
                         });
                         break;
                 }
