@@ -35,6 +35,8 @@ services:
       - app-network
     ports:
       - '5432:5432'
+    # environment:
+      # - POSTGRES_HOST_AUTH_METHOD=trust
     healthcheck:
       test: pg_isready
       interval: 10s

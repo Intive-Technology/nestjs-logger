@@ -1,14 +1,11 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { LogType, LoggerModule } from '../../../packages/logger';
-// import { Postgres } from '@intive-technology/logger/lib/Postgres';
-
-import {  } from '../../../packages/logger-pg';
-import * as Kafka from '@intive-technology/logger-kafka';
+import { LoggerModule, LogType } from '@intive-technology/logger';
 
 import { Transform, TransformCallback, TransformOptions } from 'stream';
 import Postgres from '@intive-technology/logger-pg';
+import Kafka from '@intive-technology/logger-kafka';
 
 class TestStream extends Transform {
   prefix: string;
@@ -29,51 +26,41 @@ class TestStream extends Transform {
     name: 'nestjs-logger-demo',
   },
   [
-    // {
-    //   type: LogType.STD
-    // },
-    // {
-    //   type: LogType.FILE,
-    //   parameters: {
-    //    dest: './logs/file.log',
-    //    mkdir: true
-    //   },
-    // },
-    // {
-    //   // custom logger class
-    //   type: LogType.STREAM,
-    //   streamClass: TestStream,
-    //   level: 'error',
-    //   parameters:{
-    //     prefix: 'test.............'
-    //   }
-    // },
     {
-      type: LogType.PG,
-      streamClass: new Postgres({
+      type: LogType.STD,
+      level: 'debug'
+    },
+    {
+      type: LogType.FILE,
+      parameters: {
+       dest: './logs/file.log',
+       mkdir: true
+      },
+    },
+    {
+      type: LogType.STREAM,
+      stream: new TestStream({ prefix: 'test.........'}),
+      level: 'error',
+      parameters: {}
+    },
+    {
+      type: LogType.STREAM,
+      stream: new Postgres({
         database: 'postgres',
         host: 'database',
         port: 5432,
         user: 'postgres',
         password: 'postgres',
       }, 'logs', 'log'),
-      // parameters: {
-      //   database: 'postgres',
-      //   host: 'database',
-      //   port: 5432,
-      //   user: 'postgres',
-      //   password: 'postgres',
-      // }
+      parameters: {},
+      level: 'debug'
     },
-    // {
-    //   type: LogType.KAFKA,
-    //   streamClass: Kafka,
-    //   parameters: {
-    //     brokers: ['localhost:9092'],
-    //     clientId: 'test-client',
-    //     topic: 'test-topic',
-    //   }
-    // }
+    {
+      type: LogType.STREAM,
+      parameters: {},
+      stream: new Kafka(['localhost:9092'],'test-client','test-topic'),
+      level: 'debug'
+    }
   ]) ],
   controllers: [AppController],
   providers: [AppService],
